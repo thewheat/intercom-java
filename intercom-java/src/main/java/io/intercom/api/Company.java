@@ -40,6 +40,9 @@ public class Company extends TypedData {
         entity.setSessionCount(company.getSessionCount());
         entity.setMonthlySpend(company.getMonthlySpend());
         entity.setRemoteCreatedAt(company.getRemoteCreatedAt());
+        entity.setIndustry(company.getIndustry());
+        entity.setSize(company.getSize());
+        entity.setWebsite(company.getWebsite());
         if(company.getCustomAttributes() != null) {
             entity.getCustomAttributes().putAll(company.getCustomAttributes());
         }
@@ -181,6 +184,9 @@ public class Company extends TypedData {
     @JsonProperty("remote_created_at")
     private long remoteCreatedAt;
 
+    @JsonProperty("last_request_at")
+    private long lastRequestAt;
+
     @JsonProperty("created_at")
     private long createdAt;
 
@@ -192,6 +198,15 @@ public class Company extends TypedData {
 
     @JsonProperty("user_count")
     private Integer userCount;
+
+    @JsonProperty("size")
+    private int size;
+
+    @JsonProperty("website")
+    private String website;
+
+    @JsonProperty("industry")
+    private String industry;
 
     @JsonIgnoreProperties(ignoreUnknown = false)
     @JsonProperty("custom_attributes")
@@ -236,6 +251,33 @@ public class Company extends TypedData {
         return this;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public Company setSize(int size) {
+        this.size = size;
+        return this;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public Company setWebsite(String website) {
+        this.website = website;
+        return this;
+    }
+
+    public String getIndustry() {
+        return industry;
+    }
+
+    public Company setIndustry(String industry) {
+        this.industry = industry;
+        return this;
+    }
+
     public long getCreatedAt() {
         return createdAt;
     }
@@ -258,15 +300,14 @@ public class Company extends TypedData {
     }
 
     /**
-     * Deprecated. The Intercom API does not support changing the
-     * session value for a company. Calling this method has no
-     * effect.
+     * Note. The Intercom API does not support changing the
+     * session value for a company. Method needed for testing
      *
-     * @param sessionCount this value is ignored
+     * @param sessionCount
      * @return the company object
      */
-    @Deprecated
     public Company setSessionCount(int sessionCount) {
+        this.sessionCount = sessionCount;
         return this;
     }
 
@@ -276,6 +317,15 @@ public class Company extends TypedData {
 
     public Company setRemoteCreatedAt(long remoteCreatedAt) {
         this.remoteCreatedAt = remoteCreatedAt;
+        return this;
+    }
+
+    public long getLastRequestAt() {
+        return lastRequestAt;
+    }
+
+    public Company setLastRequestAt(long lastRequestAt) {
+        this.lastRequestAt = lastRequestAt;
         return this;
     }
 
@@ -339,6 +389,7 @@ public class Company extends TypedData {
         if (remoteCreatedAt != company.remoteCreatedAt) return false;
         if (sessionCount != company.sessionCount) return false;
         if (updatedAt != company.updatedAt) return false;
+        if (lastRequestAt != company.lastRequestAt) return false;
         if (companyID != null ? !companyID.equals(company.companyID) : company.companyID != null) return false;
         if (customAttributes != null ? !customAttributes.equals(company.customAttributes) : company.customAttributes != null)
             return false;
@@ -353,6 +404,9 @@ public class Company extends TypedData {
         if (untag != null ? !untag.equals(company.untag) : company.untag != null) return false;
         //noinspection RedundantIfStatement
         if (userCount != null ? !userCount.equals(company.userCount) : company.userCount != null) return false;
+        if (size != company.size) return false;
+        if (website != null ? !website.equals(company.website) : company.website != null) return false;
+        if (industry != null ? !industry.equals(company.industry) : company.industry != null) return false;
 
         return true;
     }
@@ -368,12 +422,16 @@ public class Company extends TypedData {
         result = 31 * result + (int) (remoteCreatedAt ^ (remoteCreatedAt >>> 32));
         result = 31 * result + (int) (createdAt ^ (createdAt >>> 32));
         result = 31 * result + (int) (updatedAt ^ (updatedAt >>> 32));
+        result = 31 * result + (int) (lastRequestAt ^ (lastRequestAt >>> 32));
         result = 31 * result + (plan != null ? plan.hashCode() : 0);
         result = 31 * result + (userCount != null ? userCount.hashCode() : 0);
         result = 31 * result + (customAttributes != null ? customAttributes.hashCode() : 0);
         result = 31 * result + (segmentCollection != null ? segmentCollection.hashCode() : 0);
         result = 31 * result + (tagCollection != null ? tagCollection.hashCode() : 0);
         result = 31 * result + (untag != null ? untag.hashCode() : 0);
+        result = 31 * result + size;
+        result = 31 * result + (website != null ? website.hashCode() : 0);
+        result = 31 * result + (industry != null ? industry.hashCode() : 0);
         return result;
     }
 
@@ -387,11 +445,15 @@ public class Company extends TypedData {
             ", monthlySpend=" + monthlySpend +
             ", remoteCreatedAt=" + remoteCreatedAt +
             ", createdAt=" + createdAt +
+            ", lastRequestAt=" + lastRequestAt +
             ", updatedAt=" + updatedAt +
             ", plan=" + plan +
             ", customAttributes=" + customAttributes +
             ", segmentCollection=" + segmentCollection +
             ", tagCollection=" + tagCollection +
+            ", size=" + size +
+            ", website='" + website + '\'' +
+            ", industry='" + industry + '\'' +
             "} " + super.toString();
     }
 
