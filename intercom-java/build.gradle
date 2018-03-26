@@ -51,13 +51,13 @@ bintray {
   dryRun = false
   publish = project.publish
   pkg {
-    repo = 'intercom-maven'
-    userOrg = 'intercom'
-    name = 'intercom-java'
+    repo = 'TestMaven'
+    userOrg = 'intercomtest'
+    name = 'test-java'
     desc = 'Java bindings for the Intercom API'
-    websiteUrl = 'https://github.com/intercom/intercom-java'
-    issueTrackerUrl = 'https://github.com/intercom/intercom-java/issues'
-    vcsUrl = 'https://github.com/intercom/intercom-java.git'
+    websiteUrl = 'https://github.com/thewheat/intercom-java'
+    issueTrackerUrl = 'https://github.com/thewheat/intercom-java/issues'
+    vcsUrl = 'https://github.com/thewheat/intercom-java.git'
     licenses = ['Apache-2.0']
     labels = ['intercom', 'java', 'api']
     publicDownloadNumbers = true
