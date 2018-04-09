@@ -7,6 +7,7 @@ buildscript {
   dependencies {
     classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.6'
     classpath 'org.ajoberstar:gradle-git:0.10.0'
+
   }
 }
 
@@ -25,6 +26,7 @@ subprojects {
     dependencies {
       classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.6'
       classpath 'org.ajoberstar:gradle-git:0.10.0'
+
     }
   }
 
