@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat
 final publicationVersion = new Version(version)
 def rawVersion = version
 
-group = 'io.intercom'
+group = 'org.thewheatfield'
 version = publicationVersion
 status = version.status
 ext.publish = true
