@@ -38,7 +38,7 @@ and add the project declaration to your `pom.xml`:
 <dependency>
   <groupId>io.intercom</groupId>
   <artifactId>intercom-java</artifactId>
-  <version>2.3.3</version>
+  <version>2.5.1</version>
 </dependency>
 ```
 
@@ -56,7 +56,7 @@ and add the project to the `dependencies` block in your `build.gradle`:
 
 ```groovy
 dependencies {
-  compile 'io.intercom:intercom-java:2.3.3'
+  compile 'io.intercom:intercom-java:2.5.1'
 }  
 ```
 
@@ -71,7 +71,7 @@ resolvers += "jcenter" at "http://jcenter.bintray.com"
 and add the project to your `libraryDependencies` in your `build.sbt`:
 
 ```scala
-libraryDependencies += "io.intercom" % "intercom-java" % "2.3.3"
+libraryDependencies += "io.intercom" % "intercom-java" % "2.5.1"
 ```
 
 ## Resources
@@ -431,13 +431,13 @@ Conversation.create(adminMessage);
 // send a message from a user
 UserMessage userMessage = new UserMessage()
     .setBody("Hey! Is there, is there a reward?")
-    .setUser(user);
+    .setFrom(user);
 Conversation.create(userMessage);
 
 // send a message from a contact
 ContactMessage contactMessage = new ContactMessage()
     .setBody("Hey! Is there, is there a reward?")
-    .setUser(contact);
+    .setFrom(contact);
 Conversation.create(contactMessage);
 
 //list all conversations
